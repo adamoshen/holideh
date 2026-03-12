@@ -8,6 +8,10 @@ Description: Tools for working with Canadian dates, including R wrappers
 License: MIT + file LICENSE
 URL: https://adamoshen.github.io/holideh, https://github.com/adamoshen/holideh
 BugReports: https://github.com/adamoshen/holideh/issues
+Imports: 
+    httr2,
+    magrittr,
+    tibble
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

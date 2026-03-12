@@ -1,0 +1,13 @@
+Package: holideh
+Title: Tools for Working with Canadian Dates
+Version: 0.0.0.9000
+Authors@R: 
+    person("Adam", "Shen", , "adamshen1@gmail.com", role = c("aut", "cre"))
+Description: Tools for working with Canadian dates, including R wrappers
+    for the Canada Holidays API <https://canada-holidays.ca/>.
+License: MIT + file LICENSE
+URL: https://adamoshen.github.io/holideh, https://github.com/adamoshen/holideh
+BugReports: https://github.com/adamoshen/holideh/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

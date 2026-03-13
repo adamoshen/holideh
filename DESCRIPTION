@@ -11,6 +11,7 @@ BugReports: https://github.com/adamoshen/holideh/issues
 Imports: 
     httr2,
     magrittr,
+    rlang,
     tibble
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -31,7 +31,7 @@
 #' }
 #' @seealso [Canada Holidays API](https://canada-holidays.ca/)
 #' @export
-get_provinces <- function(year = NULL, optional = NULL) {
+get_province <- function(year = NULL, optional = NULL) {
   # ---- Checks and type conversions ----
 
   check_number_whole(year, min = 2013, max = 2038, allow_null = TRUE)

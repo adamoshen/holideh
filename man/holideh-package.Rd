@@ -6,6 +6,8 @@
 \alias{holideh-package}
 \title{holideh: Tools for Working with Canadian Dates}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Tools for working with Canadian dates, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
 }
 \seealso{

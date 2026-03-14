@@ -2,8 +2,8 @@
 #'
 #' Get holidays from the Canada Holidays API.
 #'
-#' @param year The year for which holidays should be retrieved. The default, `NULL`, is equivalent
-#' to the current year.
+#' @param year The year for which holidays should be retrieved, between 2013 and 2038. The default,
+#' `NULL`, is equivalent to the current year.
 #' @param federal A boolean indicating whether only federal holidays should be retrieved. The
 #' default, `NULL`, is equivalent to `FALSE`.
 #' @param optional A boolean indicating whether optional (non-legislated) holidays should be

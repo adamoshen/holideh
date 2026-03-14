@@ -7,8 +7,8 @@
 get_holidays(year = NULL, federal = NULL, optional = NULL)
 }
 \arguments{
-\item{year}{The year for which holidays should be retrieved. The default, \code{NULL}, is equivalent
-to the current year.}
+\item{year}{The year for which holidays should be retrieved, between 2013 and 2038. The default,
+\code{NULL}, is equivalent to the current year.}
 
 \item{federal}{A boolean indicating whether only federal holidays should be retrieved. The
 default, \code{NULL}, is equivalent to \code{FALSE}.}

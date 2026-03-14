@@ -17,6 +17,7 @@ Imports:
     rlang,
     stringr,
     tibble,
+    tidyr,
     tidyselect,
     utf8
 Encoding: UTF-8

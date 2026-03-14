@@ -1,7 +1,6 @@
 #' Get holidays from the Canada Holidays API
 #'
-#' Get all holidays for a given year. Choose between federal/non-federal holidays and
-#' legislated/non-legislated holidays.
+#' Get all holidays for a given year. Best used for obtaining a list of federal holidays.
 #'
 #' @param year The year for which holidays should be retrieved, between 2013 and 2038. The default,
 #' `NULL`, is equivalent to the current year.

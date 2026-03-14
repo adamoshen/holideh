@@ -31,8 +31,7 @@ the holiday and source links.}
 }
 }
 \description{
-Get all holidays for a given year. Choose between federal/non-federal holidays and
-legislated/non-legislated holidays.
+Get all holidays for a given year. Best used for obtaining a list of federal holidays.
 }
 \examples{
 get_holidays()

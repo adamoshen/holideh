@@ -31,7 +31,8 @@ the holiday and source links.}
 }
 }
 \description{
-Get holidays from the Canada Holidays API.
+Get all holidays for a given year. Choose between federal/non-federal holidays and
+legislated/non-legislated holidays.
 }
 \examples{
 get_holidays()

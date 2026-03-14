@@ -53,12 +53,12 @@ get_holidays <- function(year = NULL, federal = NULL, optional = NULL) {
   # ---- Process results ----
 
   outer_col_names <- c(
-    "holiday_id" = "id",
     "date" = "date",
+    "observed_date" = "observedDate",
     "name_en" = "nameEn",
     "name_fr" = "nameFr",
     "federal" = "federal",
-    "observed_date" = "observedDate",
+    "holiday_id" = "id",
     "provinces" = "provinces"
   )
 

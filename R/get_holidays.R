@@ -21,7 +21,9 @@
 #' the holiday and source links.}
 #' }
 #' @examples
-#' get_holidays()
+#' if (interactive()) {
+#'   get_holidays()
+#' }
 #' @seealso [Canada Holidays API](https://canada-holidays.ca/)
 #' @export
 get_holidays <- function(year = NULL, federal = NULL, optional = NULL) {

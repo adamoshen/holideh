@@ -34,7 +34,9 @@ the holiday and source links.}
 Get all holidays for a given year. Best used for obtaining a list of federal holidays.
 }
 \examples{
-get_holidays()
+if (interactive()) {
+  get_holidays()
+}
 }
 \seealso{
 \href{https://canada-holidays.ca/}{Canada Holidays API}

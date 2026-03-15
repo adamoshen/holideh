@@ -39,7 +39,7 @@
 #' }
 #' @examples
 #' if (interactive()) {
-#'   get_province()
+#'   get_province(province = "ON")
 #' }
 #' @seealso [get_holidays()], [Canada Holidays API](https://canada-holidays.ca/)
 #' @export

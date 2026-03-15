@@ -55,7 +55,7 @@ Province and territory codes:
 }
 \examples{
 if (interactive()) {
-  get_province()
+  get_province(province = "ON")
 }
 }
 \seealso{

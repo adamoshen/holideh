@@ -39,5 +39,5 @@ if (interactive()) {
 }
 }
 \seealso{
-\href{https://canada-holidays.ca/}{Canada Holidays API}
+\code{\link[=get_province]{get_province()}}, \href{https://canada-holidays.ca/}{Canada Holidays API}
 }

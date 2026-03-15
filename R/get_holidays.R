@@ -24,7 +24,7 @@
 #' if (interactive()) {
 #'   get_holidays()
 #' }
-#' @seealso [Canada Holidays API](https://canada-holidays.ca/)
+#' @seealso [get_province()], [Canada Holidays API](https://canada-holidays.ca/)
 #' @export
 get_holidays <- function(year = NULL, federal = NULL, optional = NULL) {
   # ---- Checks and type conversions ----

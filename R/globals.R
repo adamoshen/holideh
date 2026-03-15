@@ -8,7 +8,10 @@ globalVariables(
     "name_fr",
     "nextHoliday",
     "observed_date",
+    "province_id",
+    "province_name_en",
     "province_name_fr",
-    "provinces"
+    "provinces",
+    "source_info"
   )
 )

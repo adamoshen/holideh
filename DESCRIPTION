@@ -9,6 +9,7 @@ License: MIT + file LICENSE
 URL: https://adamoshen.github.io/holideh, https://github.com/adamoshen/holideh
 BugReports: https://github.com/adamoshen/holideh/issues
 Imports: 
+    cli,
     dplyr,
     httr2,
     lubridate,

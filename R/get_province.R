@@ -92,10 +92,10 @@ get_province <- function(province, year = NULL, optional = NULL) {
 
   result %>%
     tibble::as_tibble() %>%
-    dplyr::rename(all_of(outer_col_names)) %>%
+    dplyr::rename(tidyselect::all_of(outer_col_names)) %>%
     tidyr::nest(source_info = tidyselect::starts_with("source")) %>%
     tidyr::unnest(holidays) %>%
-    dplyr::rename(all_of(inner_col_names)) %>%
+    dplyr::rename(tidyselect::all_of(inner_col_names)) %>%
     dplyr::select(
       date, observed_date, name_en, name_fr, federal, holiday_id,
       province_id, province_name_en, province_name_fr, source_info

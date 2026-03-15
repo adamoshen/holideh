@@ -2,11 +2,13 @@
 % Please edit documentation in R/get_province.R
 \name{get_province}
 \alias{get_province}
-\title{Get all provinces and territories and their holidays from the Canada Holidays API}
+\title{Get holidays for a province or territory from the Canada Holidays API}
 \usage{
-get_province(year = NULL, optional = NULL)
+get_province(province, year = NULL, optional = NULL)
 }
 \arguments{
+\item{province}{The two letter abbreviation for a province/territory (case-sensitive).}
+
 \item{year}{The year for which holidays should be retrieved, between 2013 and 2038. The default,
 \code{NULL}, is equivalent to the current year.}
 
@@ -16,14 +18,6 @@ retrieved. The default, \code{NULL}, is equivalent to \code{FALSE}.}
 \value{
 A \link[tibble:tibble-package]{tibble} with columns:
 \describe{
-\item{province_id}{\verb{<chr>} The abbreviated province/territory code.}
-\item{province_name_en}{\verb{<chr>} The name of the province/territory, in English.}
-\item{province_name_fr}{\verb{<chr>} The name of the province/territory, in French.}
-\item{holidays}{\verb{<list>} See below.}
-\item{source_info}{\verb{<list>} A list containing a link to the information source.}
-}
-The \link[tibble:tibble-package]{tibbles} contained inside \code{holidays} are:
-\describe{
 \item{date}{\verb{<date>} The date when the holiday occurs.}
 \item{observed_date}{\verb{<date>} The date when the holiday is observed (celebrated). For example,
 if Christmas Day falls on a Sunday, it is observed (celebrated) on the proceeding Monday.}
@@ -31,17 +25,39 @@ if Christmas Day falls on a Sunday, it is observed (celebrated) on the proceedin
 \item{name_fr}{\verb{<chr>} The name of the holiday, in French.}
 \item{federal}{\verb{<lgl>} Whether the holiday is a federal holiday.}
 \item{holiday_id}{\verb{<int>} The id of the holiday.}
+\item{province_id}{\verb{<chr>} The abbreviated province/territory code.}
+\item{province_name_en}{\verb{<chr>} The name of the province/territory, in English.}
+\item{province_name_fr}{\verb{<chr>} The name of the province/territory, in French.}
+\item{source_info}{\verb{<list>} A list containing a link to the information source.}
 }
 }
 \description{
-Get all provinces and territories, and their holidays for a given year. Best used to obtain
-holiday information by province and territory, for all provinces and territories.
+Get all holidays for a given year, for a province or territory. Best used to obtain
+holiday information for a specific province or territory.
+}
+\details{
+Province and territory codes:
+\itemize{
+\item Alberta: \code{"AB"}
+\item British Columbia: \code{"BC"}
+\item Manitoba: \code{"MB"}
+\item New Brunswick: \code{"NB"}
+\item Newfoundland and Labrador: \code{"NL"}
+\item Nova Scotia: \code{"NS"}
+\item Northwest Territories: \code{"NT"}
+\item Nunavut: \code{"NU"}
+\item Ontario: \code{"ON"}
+\item Prince Edward Island: \code{"PE"}
+\item Quebec: \code{"QC"}
+\item Saskatchewan: \code{"SK"}
+\item Yukon: \code{"YT"}
+}
 }
 \examples{
 if (interactive()) {
-  get_provinces()
+  get_province()
 }
 }
 \seealso{
-\href{https://canada-holidays.ca/}{Canada Holidays API}
+\code{\link[=get_holidays]{get_holidays()}}, \href{https://canada-holidays.ca/}{Canada Holidays API}
 }

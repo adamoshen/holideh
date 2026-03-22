@@ -18,7 +18,7 @@
 #'
 #' winter_holidays <- ymd(c("2025-12-25", "2025-12-26"))
 #'
-#' n_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays)
+#' count_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays)
 #' @export
 count_bizdays <- function(from, to, holidays, weekend = c("Sat", "Sun")) {
   if (length(from) != 1 | length(to) != 1) {

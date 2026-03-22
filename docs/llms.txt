@@ -163,7 +163,7 @@ are predicate functions (functions that return either `TRUE` or
 [`purrr::keep()`](https://purrr.tidyverse.org/reference/keep.html) and
 [`purrr::discard()`](https://purrr.tidyverse.org/reference/keep.html).
 
-For more detailed usages, see the [Getting Started
+For more detailed usages, see the [Get Started
 vignette](https://adamoshen.github.io/holideh/articles/holideh.html).
 
 # Package index

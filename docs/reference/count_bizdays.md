@@ -58,6 +58,6 @@ library(lubridate)
 
 winter_holidays <- ymd(c("2025-12-25", "2025-12-26"))
 
-n_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays)
-#> Error in n_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays): could not find function "n_bizdays"
+count_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays)
+#> [1] 6
 ```

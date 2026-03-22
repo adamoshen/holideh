@@ -1,7 +1,11 @@
 # Introduction to holideh
 
 ``` r
-library(tidyverse)
+library(magrittr)
+library(tibble)
+library(dplyr)
+library(lubridate)
+library(purrr)
 library(holideh)
 ```
 

@@ -50,5 +50,5 @@ count_bizdays <- function(from, to, holidays, weekend = c("Sat", "Sun")) {
 
   seq.Date(from = from, to = to, by = "1 day") %>%
     is_bizday(holidays = holidays, weekend = weekend) %>%
-    length()
+    sum()
 }

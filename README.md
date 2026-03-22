@@ -162,5 +162,5 @@ As `is_weekend()`, `is_holiday()`, and `is_bizday()` are predicate
 functions (functions that return either `TRUE` or `FALSE`), they can
 also be used within `purrr::keep()` and `purrr::discard()`.
 
-For more detailed usages, see the [Getting Started
+For more detailed usages, see the [Get Started
 vignette](https://adamoshen.github.io/holideh/articles/holideh.html).

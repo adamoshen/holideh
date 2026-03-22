@@ -1,0 +1,119 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# holideh
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+**holideh** (pronounced as "holiday") provides tools for working with business days and Canadian
+holidays, including wrappers for the [Canada Holidays API](https://canada-holidays.ca).
+
+## Installation
+
+You can install the package using:
+
+``` r
+# install.packages("pak")
+pak::pak("adamoshen/holideh")
+```
+
+or
+
+``` r
+# install.packages("remotes")
+remotes::install_github("adamoshen/holideh")
+```
+
+## Basic usage
+
+```{r}
+library(magrittr)
+library(tibble)
+library(purrr)
+library(lubridate)
+library(holideh)
+```
+
+### Retrieving federal holidays
+
+Federal holidays can be retrieved from the [Canada Holidays API](https://canada-holidays.ca) as a
+tibble:
+
+```{r}
+get_holidays(2027, federal = TRUE)
+```
+
+The `date` column is the official calendar date of the holiday, while the `observed_date` column
+is the date when the holiday is observed (celebrated). For example, in the Canadian federal
+public service, if New Year's Day was a Sunday, it would be observed on the Monday, meaning there
+would be no work on Monday. Obviously, how holidays are observed will depend on your employer.
+
+### Retrieving holidays by province/territory
+
+Holidays celebrated by a single province/territory can also be retrieved, as a tibble, from the
+[Canada Holidays API](https://canada-holidays.ca) by providing the two-letter abbreviation for the
+province/territory:
+
+```{r}
+get_province("ON", 2027)
+```
+
+### Additional helpers
+
+Consider the following setup:
+
+- In 2027, Christmas (December 25) and Boxing Day (December 26) fall on Saturday and Sunday,
+respectively.
+- Therefore, they will be observed on Monday (December 27) and Tuesday (December 28), respectively.
+
+```{r}
+holiday_date <- ymd(c("2027-12-25", "2027-12-26"))
+observed_date <- ymd(c("2027-12-27", "2027-12-28"))
+
+calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
+```
+
+**holideh** also contains additional helpers for other operations:
+
+- `is_weekend()`: Given a vector dates, detects whether the supplied dates are a weekend (typically
+Saturday or Sunday, but can be modified).
+
+    ```{r}
+    set_names(is_weekend(calendar), calendar)
+    ```
+
+- `is_holiday()`: Given a vector of dates and a vector of holiday dates, detects whether the
+supplied dates are a holiday. Here, it is important to consider whether your analysis requires
+official holiday dates or observed holiday dates.
+
+    ```{r}
+    set_names(is_holiday(calendar, holiday_date), calendar)
+    set_names(is_holiday(calendar, observed_date), calendar)
+    ```
+
+- `is_bizday()`: Given a vector of dates and a vector of holiday dates (and optionally, a vector of
+what is considered a "weekend"), detects whether the supplied dates are a business day:
+
+    ```{r}
+    set_names(is_bizday(calendar, holiday_date), calendar)
+    set_names(is_bizday(calendar, observed_date), calendar)
+    ```
+
+As `is_weekend()`, `is_holiday()`, and `is_bizday()` are predicate functions (functions that return
+either `TRUE` or `FALSE`), they can also be used within `purrr::keep()` and `purrr::discard()`.
+
+For more detailed usages, see the
+[Getting Started vignette](https://adamoshen.github.io/holideh/articles/holideh.html).

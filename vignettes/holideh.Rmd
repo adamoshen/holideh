@@ -1,0 +1,201 @@
+---
+title: "Introduction to holideh"
+output:
+  rmarkdown::html_vignette:
+    highlight: tango
+    mathjax: null
+    md_extensions: -smart
+vignette: >
+  %\VignetteIndexEntry{holideh}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+
+new_hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
+
+options(crayon.enabled = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(holideh)
+```
+
+## Get federal holidays
+
+To get the federal holidays for the 2019 year, we can use:
+
+```{r}
+holidays19 <- get_holidays(2019, federal = TRUE)
+
+holidays19
+```
+
+### More than one year
+
+Since the `year` parameter of `get_holidays()` only accepts a single value, we can use
+`purrr::map()` to get the holidays for multiple years. Since each list-element is a tibble, we can
+then use `purrr::list_rbind()` to combine all holidays into a single tibble.
+
+To get the federal holidays for the years 2026 to 2028:
+
+```{r}
+holidays <- 2026:2028 %>%
+  map(\(year) get_holidays(year, federal = TRUE)) %>%
+  list_rbind()
+
+holidays
+```
+
+The `observed_date` column is likely the column to be used in any calculations as this is the date
+between Monday and Friday when the holiday is observed. For example, in the federal government, if
+New Year's Day falls on a Sunday, then it is observed on the Monday (i.e. we don't work on the
+Monday).
+
+## Get holidays for a single province
+
+To get the holidays for the province of Ontario for the 2019 year, we can use:
+
+```{r}
+holidays_on19 <- get_province("ON", year = 2019)
+
+holidays_on19
+```
+
+To get the holidays for more than one province, or for a single province over multiple years, we can
+once again use `purrr::map()` for the iteration, and `purrr::list_rbind()` to row-bind the results.
+
+## Operations with business days
+
+### A simple example
+
+In 2027, Christmas and Boxing Day fall on Saturday and Sunday, respectively. Therefore, they will
+be observed the proceeding Monday and Tuesday.
+
+```{r}
+simple_example <- tibble(
+  dates = seq(from = ymd("2027-12-20"), to = ymd("2028-01-05"), by = "1 day")
+)
+
+simple_example
+```
+
+For a federal government setting, you will likely be using the observed dates, not the actual
+holiday dates:
+
+```{r}
+holiday_dates <- pull(holidays, date)
+obs_dates <- pull(holidays, observed_date)
+```
+
+The example below gives an overview of the helpers in this package:
+
+```{r}
+simple_example <- simple_example %>%
+  mutate(
+    # `wday()` is from lubridate
+    day_of_week = wday(dates, label = TRUE, abbr = FALSE),
+    
+    # Check if a date is a weekend
+    weekend = is_weekend(dates),
+    
+    # Check if a holiday falls on a date using the "actual dates"
+    true_holiday = is_holiday(dates, holiday_dates),
+    
+    # Check if a holiday falls on a date using the "observed dates"
+    obs_holiday = is_holiday(dates, obs_dates),
+    
+    # Check if a date is a business day (i.e. not holiday + not weekend)
+    bizday = is_bizday(dates, holidays = obs_dates)
+  ) %>%
+  left_join(
+    select(holidays, observed_date, name_en),
+    by = c("dates" = "observed_date")
+  )
+
+simple_example
+```
+
+### A more difficult (realistic) example
+
+Consider the scenario where we calculate productivity as the number of points accumulated in a
+reporting period divided by the number of business days. In addition, suppose that the points are
+reported on a biweekly basis on Wednesdays. Here, the goal is to make use of the `count_bizdays()`
+function, which counts the number of business days between two dates (inclusively).
+
+```{r, echo = FALSE}
+set.seed(25)
+```
+
+```{r}
+real_example <- tibble(
+  end = seq(from = ymd("2027-11-03"), to = ymd("2028-01-27"), by = "2 weeks"),
+  points = ceiling(runif(length(end), min = 90, max = 120))
+)
+
+real_example
+```
+
+To this data frame, we need to add the start of the reporting period (13 days prior):
+
+```{r}
+real_example <- real_example %>%
+  mutate(start = end - days(13)) %>%
+  relocate(start)
+
+real_example
+```
+
+Now that we have the start and end dates, we can calculate the number of business days in the
+reporting period. Note that `count_bizdays()` is not vectorised over `start` and `end`, so we will
+need to wrap it in `map2_int()`. Once we have the number of business days, calculating productivity
+is straightforward:
+
+```{r}
+real_example <- real_example %>%
+  mutate(
+    n_bizdays = map2_int(
+      start, end,
+      \(from, to) count_bizdays(from, to, holidays = obs_dates)
+    ),
+    productivity = points / n_bizdays
+  )
+
+real_example
+```
+
+We can check our work by zooming in to the period of 2027-12-16 to 2027-12-29 and making use of the
+helper functions previously demonstrated in the simple example.
+
+```{r}
+tibble(
+  dates = seq(from = ymd("2027-12-16"), to = ymd("2027-12-29"), by = "1 day"),
+  day_of_week = wday(dates, label = TRUE, abbr = FALSE)
+) %>%
+  mutate(
+    # Check if a date is a weekend
+    weekend = is_weekend(dates),
+    
+    # Check if a holiday falls on a date using the "actual dates"
+    true_holiday = is_holiday(dates, holiday_dates),
+    
+    # Check if a holiday falls on a date using the "observed dates"
+    obs_holiday = is_holiday(dates, obs_dates),
+    
+    # Check if a date is a business day (i.e. not holiday + not weekend)
+    bizday = is_bizday(dates, holidays = obs_dates)
+  ) %>%
+  left_join(
+    select(holidays, observed_date, name_en),
+    by = c("dates" = "observed_date")
+  )
+```
+
+✅ There are eight business days in this reporting period, which matches our results above.

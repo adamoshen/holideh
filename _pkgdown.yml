@@ -1,0 +1,22 @@
+url: https://adamoshen.github.io/holideh
+template:
+  bootstrap: 5
+  bootswatch: zephyr
+  bslib:
+    primary: "#CF3000"
+    base_font: {google: "Google Sans"}
+    code_font: {google: "Google Sans Code"}
+  theme: atom-one-light
+
+reference:
+- title: "Canada Holidays API"
+  contents:
+  - get_holidays
+  - get_province
+
+- title: "Date helpers"
+  contents:
+  - is_bizday
+  - is_holiday
+  - is_weekend
+  - count_bizdays

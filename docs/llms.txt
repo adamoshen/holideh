@@ -1,0 +1,194 @@
+# holideh
+
+**holideh** (pronounced as “holiday”) provides tools for working with
+business days and Canadian holidays, including wrappers for the [Canada
+Holidays API](https://canada-holidays.ca).
+
+## Installation
+
+You can install the package using:
+
+``` r
+# install.packages("pak")
+pak::pak("adamoshen/holideh")
+```
+
+or
+
+``` r
+# install.packages("remotes")
+remotes::install_github("adamoshen/holideh")
+```
+
+## Basic usage
+
+``` r
+library(magrittr)
+library(tibble)
+library(purrr)
+#> 
+#> Attaching package: 'purrr'
+#> The following object is masked from 'package:magrittr':
+#> 
+#>     set_names
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following objects are masked from 'package:base':
+#> 
+#>     date, intersect, setdiff, union
+library(holideh)
+```
+
+### Retrieving federal holidays
+
+Federal holidays can be retrieved from the [Canada Holidays
+API](https://canada-holidays.ca) as a tibble:
+
+``` r
+get_holidays(2027, federal = TRUE)
+#> # A tibble: 12 × 7
+#>    date       observed_date name_en         name_fr federal holiday_id provinces
+#>    <date>     <date>        <chr>           <chr>   <lgl>        <int> <list>   
+#>  1 2027-01-01 2027-01-01    New Year's Day  Jour d… TRUE             1 <tibble> 
+#>  2 2027-03-26 2027-03-26    Good Friday     Vendre… TRUE             8 <tibble> 
+#>  3 2027-03-29 2027-03-29    Easter Monday   Lundi … TRUE             9 <tibble> 
+#>  4 2027-05-24 2027-05-24    Victoria Day    Fête d… TRUE            12 <tibble> 
+#>  5 2027-07-01 2027-07-01    Canada Day      Fête d… TRUE            16 <tibble> 
+#>  6 2027-08-02 2027-08-02    Civic Holiday   Congé … TRUE            19 <tibble> 
+#>  7 2027-09-06 2027-09-06    Labour Day      Fête d… TRUE            27 <tibble> 
+#>  8 2027-09-30 2027-09-30    National Day f… Journé… TRUE            29 <tibble> 
+#>  9 2027-10-11 2027-10-11    Thanksgiving    Action… TRUE            31 <tibble> 
+#> 10 2027-11-11 2027-11-11    Remembrance Day Jour d… TRUE            32 <tibble> 
+#> 11 2027-12-25 2027-12-27    Christmas Day   Noël    TRUE            33 <tibble> 
+#> 12 2027-12-26 2027-12-28    Boxing Day      Lendem… TRUE            34 <tibble>
+```
+
+The `date` column is the official calendar date of the holiday, while
+the `observed_date` column is the date when the holiday is observed
+(celebrated). For example, in the Canadian federal public service, if
+New Year’s Day was a Sunday, it would be observed on the Monday, meaning
+there would be no work on Monday. Obviously, how holidays are observed
+will depend on your employer.
+
+### Retrieving holidays by province/territory
+
+Holidays celebrated by a single province/territory can also be
+retrieved, as a tibble, from the [Canada Holidays
+API](https://canada-holidays.ca) by providing the two-letter
+abbreviation for the province/territory:
+
+``` r
+get_province("ON", 2027)
+#> # A tibble: 9 × 10
+#>   date       observed_date name_en        name_fr federal holiday_id province_id
+#>   <date>     <date>        <chr>          <chr>   <lgl>        <int> <chr>      
+#> 1 2027-01-01 2027-01-01    New Year's Day Jour d… TRUE             1 ON         
+#> 2 2027-02-15 2027-02-15    Family Day     Fête d… FALSE            5 ON         
+#> 3 2027-03-26 2027-03-26    Good Friday    Vendre… TRUE             8 ON         
+#> 4 2027-05-24 2027-05-24    Victoria Day   Fête d… TRUE            12 ON         
+#> 5 2027-07-01 2027-07-01    Canada Day     Fête d… TRUE            16 ON         
+#> 6 2027-09-06 2027-09-06    Labour Day     Fête d… TRUE            27 ON         
+#> 7 2027-10-11 2027-10-11    Thanksgiving   Action… TRUE            31 ON         
+#> 8 2027-12-25 2027-12-27    Christmas Day  Noël    TRUE            33 ON         
+#> 9 2027-12-26 2027-12-28    Boxing Day     Lendem… TRUE            34 ON         
+#> # ℹ 3 more variables: province_name_en <chr>, province_name_fr <chr>,
+#> #   source_info <list>
+```
+
+### Additional helpers
+
+Consider the following setup:
+
+- In 2027, Christmas (December 25) and Boxing Day (December 26) fall on
+  Saturday and Sunday, respectively.
+- Therefore, they will be observed on Monday (December 27) and Tuesday
+  (December 28), respectively.
+
+``` r
+holiday_date <- ymd(c("2027-12-25", "2027-12-26"))
+observed_date <- ymd(c("2027-12-27", "2027-12-28"))
+
+calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
+```
+
+**holideh** also contains additional helpers for other operations:
+
+- [`is_weekend()`](https://adamoshen.github.io/holideh/reference/off_day.md):
+  Given a vector dates, detects whether the supplied dates are a weekend
+  (typically Saturday or Sunday, but can be modified).
+
+  ``` r
+  set_names(is_weekend(calendar), calendar)
+  #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
+  #>      FALSE       TRUE       TRUE      FALSE      FALSE      FALSE      FALSE
+  ```
+
+- [`is_holiday()`](https://adamoshen.github.io/holideh/reference/off_day.md):
+  Given a vector of dates and a vector of holiday dates, detects whether
+  the supplied dates are a holiday. Here, it is important to consider
+  whether your analysis requires official holiday dates or observed
+  holiday dates.
+
+  ``` r
+  set_names(is_holiday(calendar, holiday_date), calendar)
+  #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
+  #>      FALSE       TRUE       TRUE      FALSE      FALSE      FALSE      FALSE
+  set_names(is_holiday(calendar, observed_date), calendar)
+  #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
+  #>      FALSE      FALSE      FALSE       TRUE       TRUE      FALSE      FALSE
+  ```
+
+- [`is_bizday()`](https://adamoshen.github.io/holideh/reference/is_bizday.md):
+  Given a vector of dates and a vector of holiday dates (and optionally,
+  a vector of what is considered a “weekend”), detects whether the
+  supplied dates are a business day:
+
+  ``` r
+  set_names(is_bizday(calendar, holiday_date), calendar)
+  #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
+  #>       TRUE      FALSE      FALSE       TRUE       TRUE       TRUE       TRUE
+  set_names(is_bizday(calendar, observed_date), calendar)
+  #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
+  #>       TRUE      FALSE      FALSE      FALSE      FALSE       TRUE       TRUE
+  ```
+
+As
+[`is_weekend()`](https://adamoshen.github.io/holideh/reference/off_day.md),
+[`is_holiday()`](https://adamoshen.github.io/holideh/reference/off_day.md),
+and
+[`is_bizday()`](https://adamoshen.github.io/holideh/reference/is_bizday.md)
+are predicate functions (functions that return either `TRUE` or
+`FALSE`), they can also be used within
+[`purrr::keep()`](https://purrr.tidyverse.org/reference/keep.html) and
+[`purrr::discard()`](https://purrr.tidyverse.org/reference/keep.html).
+
+For more detailed usages, see the [Getting Started
+vignette](https://adamoshen.github.io/holideh/articles/holideh.html).
+
+# Package index
+
+## Canada Holidays API
+
+- [`get_holidays()`](https://adamoshen.github.io/holideh/reference/get_holidays.md)
+  : Get holidays from the Canada Holidays API
+- [`get_province()`](https://adamoshen.github.io/holideh/reference/get_province.md)
+  : Get holidays for a province or territory from the Canada Holidays
+  API
+
+## Date helpers
+
+- [`is_bizday()`](https://adamoshen.github.io/holideh/reference/is_bizday.md)
+  : Detect business days
+- [`is_holiday()`](https://adamoshen.github.io/holideh/reference/off_day.md)
+  [`is_weekend()`](https://adamoshen.github.io/holideh/reference/off_day.md)
+  : Detect non-business days
+- [`count_bizdays()`](https://adamoshen.github.io/holideh/reference/count_bizdays.md)
+  : Count the number of business days between a range
+
+# Articles
+
+### All vignettes
+
+- [Introduction to
+  holideh](https://adamoshen.github.io/holideh/articles/holideh.md):

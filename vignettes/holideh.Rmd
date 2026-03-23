@@ -20,8 +20,15 @@ knitr::opts_chunk$set(
 
 new_hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
 
-options(crayon.enabled = TRUE)
+options(
+  crayon.enabled = TRUE,
+  rmarkdown.html_vignette.check_title = FALSE
+)
 ```
+
+This article contains some more in-depth examples on how the package can be used.
+
+## Packages
 
 ```{r}
 library(magrittr)
@@ -45,10 +52,11 @@ holidays19
 ### More than one year
 
 Since the `year` parameter of `get_holidays()` only accepts a single value, we can use
-`purrr::map()` to get the holidays for multiple years. Since each list-element is a tibble, we can
-then use `purrr::list_rbind()` to combine all holidays into a single tibble.
+`purrr::map()` to get the holidays for multiple years, as a list. Since each list-element is a
+tibble, we can follow this up with `purrr::list_rbind()` to combine all holidays into a single
+tibble.
 
-To get the federal holidays for the years 2026 to 2028:
+To get the federal holidays for the 2026 to 2028 years, we can use:
 
 ```{r}
 holidays <- 2026:2028 %>%
@@ -63,7 +71,7 @@ between Monday and Friday when the holiday is observed. For example, in the fede
 New Year's Day falls on a Sunday, then it is observed on the Monday (i.e. we don't work on the
 Monday).
 
-## Get holidays for a single province
+## Get holidays for a single province/territory
 
 To get the holidays for the province of Ontario for the 2019 year, we can use:
 
@@ -73,8 +81,9 @@ holidays_on19 <- get_province("ON", year = 2019)
 holidays_on19
 ```
 
-To get the holidays for more than one province, or for a single province over multiple years, we can
-once again use `purrr::map()` for the iteration, and `purrr::list_rbind()` to row-bind the results.
+To get the holidays for more than one province/territory, or for a single province/territory over
+multiple years, we can once again use `purrr::map()` for the iteration, and `purrr::list_rbind()`
+to row-bind the results.
 
 ## Operations with business days
 

@@ -61,7 +61,7 @@
 </div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p><strong>holideh</strong> (pronounced as “holiday”) provides tools for working with business days and Canadian holidays, including wrappers for the <a href="https://canada-holidays.ca" class="external-link">Canada Holidays API</a>.</p>
+<p><strong>holideh</strong> (pronounced “holiday”, but Canadian, eh?) provides tools for working with business days and Canadian holidays, including wrappers for the <a href="https://canada-holidays.ca" class="external-link">Canada Holidays API</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -143,14 +143,14 @@
 <p>Consider the following setup:</p>
 <ul>
 <li>In 2027, Christmas (December 25) and Boxing Day (December 26) fall on Saturday and Sunday, respectively.</li>
-<li>Therefore, they will be observed on Monday (December 27) and Tuesday (December 28), respectively.</li>
+<li>Therefore, they will be observed on Monday December 27 and Tuesday December 28, respectively.</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">holiday_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2027-12-25"</span>, <span class="st">"2027-12-26"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">observed_date</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2027-12-27"</span>, <span class="st">"2027-12-28"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">calendar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="st">"2027-12-24"</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="st">"2027-12-30"</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"1 day"</span><span class="op">)</span></span></code></pre></div>
-<p><strong>holideh</strong> also contains additional helpers for other operations:</p>
+<p><strong>holideh</strong> contains additional helpers for other operations:</p>
 <ul>
 <li>
 <p><code><a href="reference/off_day.html">is_weekend()</a></code>: Given a vector dates, detects whether the supplied dates are a weekend (typically Saturday or Sunday, but can be modified).</p>
@@ -180,7 +180,7 @@
 <span><span class="co">#&gt;       TRUE      FALSE      FALSE      FALSE      FALSE       TRUE       TRUE</span></span></code></pre></div>
 </li>
 </ul>
-<p>As <code><a href="reference/off_day.html">is_weekend()</a></code>, <code><a href="reference/off_day.html">is_holiday()</a></code>, and <code><a href="reference/is_bizday.html">is_bizday()</a></code> are predicate functions (functions that return either <code>TRUE</code> or <code>FALSE</code>), they can also be used within <code><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">purrr::keep()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">purrr::discard()</a></code>.</p>
+<p>As <code><a href="reference/off_day.html">is_weekend()</a></code>, <code><a href="reference/off_day.html">is_holiday()</a></code>, and <code><a href="reference/is_bizday.html">is_bizday()</a></code> are predicate functions (functions that return either <code>TRUE</code> or <code>FALSE</code>), they can be used in conjunction with <code><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">purrr::keep()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">purrr::discard()</a></code>.</p>
 <p>For more detailed usages, see the <a href="https://adamoshen.github.io/holideh/articles/holideh.html">Get Started vignette</a>.</p>
 </div>
 </div>

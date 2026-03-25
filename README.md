@@ -121,7 +121,7 @@ calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
 
 **holideh** contains additional helpers for other operations:
 
-- `is_weekend()`: Given a vector dates, detects whether the supplied
+- `is_weekend()`: Given a vector of dates, detects whether the supplied
   dates are a weekend (typically Saturday or Sunday, but can be
   modified).
 

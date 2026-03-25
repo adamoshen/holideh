@@ -35,7 +35,7 @@ is_holiday <- function(x, holidays) {
 
 #' @param weekend A character vector of three-letter abbreviations of weekday names indicating days
 #' that should be considered a weekend. Acceptable values are: `"Sun"`, `"Mon"`, `"Tue"`, `"Wed"`,
-#' `"Thu"`, `"Fri"`, `"Sat"`, `"Sun"`.
+#' `"Thu"`, `"Fri"`, `"Sat"`.
 #' @rdname off_day
 #' @export
 is_weekend <- function(x, weekend = c("Sat", "Sun")) {

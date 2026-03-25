@@ -59,7 +59,7 @@ extracted.</p></dd>
 <dt id="arg-weekend">weekend<a class="anchor" aria-label="anchor" href="#arg-weekend"></a></dt>
 <dd><p>A character vector of three-letter abbreviations of weekday names indicating days
 that should be considered a weekend. Acceptable values are: <code>"Sun"</code>, <code>"Mon"</code>, <code>"Tue"</code>, <code>"Wed"</code>,
-<code>"Thu"</code>, <code>"Fri"</code>, <code>"Sat"</code>, <code>"Sun"</code>.</p></dd>
+<code>"Thu"</code>, <code>"Fri"</code>, <code>"Sat"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -79,6 +79,11 @@ vector of holidays.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘lubridate’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     date, intersect, setdiff, union</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.Date.html" class="external-link">seq.Date</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="st">"2025-12-20"</span><span class="op">)</span>, to <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="st">"2025-12-31"</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"1 day"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">winter_holidays</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2025-12-25"</span>, <span class="st">"2025-12-26"</span><span class="op">)</span><span class="op">)</span></span></span>

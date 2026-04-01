@@ -10,7 +10,7 @@
 #' @param holidays A vector of dates that are holidays.
 #' @param weekend A character vector of three-letter abbreviations of weekday names indicating days
 #' that should be considered a weekend. Acceptable values are: `"Sun"`, `"Mon"`, `"Tue"`, `"Wed"`,
-#' `"Thu"`, `"Fri"`, `"Sat"`, `"Sun"`.
+#' `"Thu"`, `"Fri"`, `"Sat"`.
 #' @returns A logical vector of length equal to `x`.
 #' @seealso [is_holiday()], [is_weekend()], [count_bizdays()]
 #' @examples

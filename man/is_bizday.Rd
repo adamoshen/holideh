@@ -14,7 +14,7 @@ extracted.}
 
 \item{weekend}{A character vector of three-letter abbreviations of weekday names indicating days
 that should be considered a weekend. Acceptable values are: \code{"Sun"}, \code{"Mon"}, \code{"Tue"}, \code{"Wed"},
-\code{"Thu"}, \code{"Fri"}, \code{"Sat"}, \code{"Sun"}.}
+\code{"Thu"}, \code{"Fri"}, \code{"Sat"}.}
 }
 \value{
 A logical vector of length equal to \code{x}.

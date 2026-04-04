@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/holideh)](https://CRAN.R-project.org/package=holideh)
+![Downloads](https://cranlogs.r-pkg.org/badges/holideh?color=lightgrey)
 <!-- badges: end -->
 
 **holideh** (pronounced “holiday”, but Canadian, eh?) provides tools for
@@ -14,6 +17,12 @@ the [Canada Holidays API](https://canada-holidays.ca).
 ## Installation
 
 You can install the package using:
+
+``` r
+install.packages("holideh")
+```
+
+The development version can be installed using
 
 ``` r
 # install.packages("pak")

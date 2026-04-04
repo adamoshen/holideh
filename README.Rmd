@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # holideh <img src="man/figures/logo.png" align="right"/>
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/holideh)](https://CRAN.R-project.org/package=holideh)
+![Downloads](https://cranlogs.r-pkg.org/badges/holideh?color=lightgrey)
 <!-- badges: end -->
 
 **holideh** (pronounced "holiday", but Canadian, eh?) provides tools for working with business days
@@ -24,6 +26,12 @@ and Canadian holidays, including wrappers for the [Canada Holidays API](https://
 ## Installation
 
 You can install the package using:
+
+``` r
+install.packages("holideh")
+```
+
+The development version can be installed using
 
 ``` r
 # install.packages("pak")
@@ -88,8 +96,8 @@ calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
 
 **holideh** contains additional helpers for other operations:
 
-- `is_weekend()`: Given a vector of dates, detects whether the supplied dates are a weekend (typically
-Saturday or Sunday, but can be modified).
+- `is_weekend()`: Given a vector of dates, detects whether the supplied dates are a weekend
+(typically Saturday or Sunday, but can be modified).
 
     ```{r}
     set_names(is_weekend(calendar), calendar)

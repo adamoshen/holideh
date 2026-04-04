@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   holideh: holideh.html
-last_built: 2026-04-04T01:00Z
+last_built: 2026-04-04T01:13Z
 urls:
   reference: https://adamoshen.github.io/holideh/reference
   article: https://adamoshen.github.io/holideh/articles

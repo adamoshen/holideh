@@ -1,3 +1,3 @@
-# holideh 0.0.1
+# holideh 0.1.0
 
 * Initial CRAN submission.

@@ -4,23 +4,23 @@
 \name{holideh-package}
 \alias{holideh}
 \alias{holideh-package}
-\title{holideh: Tools for Working with Canadian Dates}
+\title{holideh: Working with Canadian Dates}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools for working with Canadian dates, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
+Tools for working with Canadian dates, such as weekends, business days, and holidays, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://adamoshen.github.io/holideh}
-  \item \url{https://github.com/adamoshen/holideh}
+  \item \url{https://adamoshen.github.io/holideh/}
+  \item \url{https://github.com/adamoshen/holideh/}
   \item Report bugs at \url{https://github.com/adamoshen/holideh/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Adam Shen \email{adamshen1@gmail.com}
+\strong{Maintainer}: Adam Shen \email{adamshen1@gmail.com} [copyright holder]
 
 }
 \keyword{internal}

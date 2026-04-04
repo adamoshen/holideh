@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools for working with Canadian dates, such as weekends, business days, and holidays, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
+Convenience date tools for identifying weekends, business days, and Canadian holidays, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
 }
 \seealso{
 Useful links:

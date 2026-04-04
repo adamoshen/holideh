@@ -7,7 +7,7 @@ Description: Tools for working with Canadian dates, such as weekends, business
   days, and holidays, including R wrappers for the Canada Holidays API
   <https://canada-holidays.ca/>.
 License: MIT + file LICENSE
-URL: https://adamoshen.github.io/holideh, https://github.com/adamoshen/holideh
+URL: https://adamoshen.github.io/holideh/, https://github.com/adamoshen/holideh/
 BugReports: https://github.com/adamoshen/holideh/issues
 Imports: 
     cli,

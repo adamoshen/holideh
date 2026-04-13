@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/adamoshen/holideh/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/adamoshen/holideh/blob/v0.1.0/DESCRIPTION)
 
 Shen A (2026). *holideh: Working with Canadian Dates*. R package version
 0.1.0, <https://adamoshen.github.io/holideh/>.

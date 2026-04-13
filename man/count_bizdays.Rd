@@ -15,7 +15,7 @@ count_bizdays(from, to, holidays, weekend = c("Sat", "Sun"))
 
 \item{weekend}{A character vector of three-letter abbreviations of weekday names indicating days
 that should be considered a weekend. Acceptable values are: \code{"Sun"}, \code{"Mon"}, \code{"Tue"}, \code{"Wed"},
-\code{"Thu"}, \code{"Fri"}, \code{"Sat"}, \code{"Sun"}.}
+\code{"Thu"}, \code{"Fri"}, \code{"Sat"}.}
 }
 \value{
 A single number.

@@ -26,8 +26,7 @@ count_bizdays(from, to, holidays, weekend = c("Sat", "Sun"))
 
   A character vector of three-letter abbreviations of weekday names
   indicating days that should be considered a weekend. Acceptable values
-  are: `"Sun"`, `"Mon"`, `"Tue"`, `"Wed"`, `"Thu"`, `"Fri"`, `"Sat"`,
-  `"Sun"`.
+  are: `"Sun"`, `"Mon"`, `"Tue"`, `"Wed"`, `"Thu"`, `"Fri"`, `"Sat"`.
 
 ## Value
 

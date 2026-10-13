@@ -1,9 +1,9 @@
-pandoc: 3.1.11
-pkgdown: 2.2.0
+pandoc: 3.8.3
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   holideh: holideh.html
-last_built: 2026-04-14T00:11Z
+last_built: 2026-10-13T03:16Z
 urls:
   reference: https://adamoshen.github.io/holideh/reference
   article: https://adamoshen.github.io/holideh/articles

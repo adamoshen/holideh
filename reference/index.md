@@ -17,3 +17,5 @@
   : Detect non-business days
 - [`count_bizdays()`](https://adamoshen.github.io/holideh/reference/count_bizdays.md)
   : Count the number of business days between a range
+- [`bind_count_bizdays()`](https://adamoshen.github.io/holideh/reference/bind_count_bizdays.md)
+  : Bind the count of business days to a data frame

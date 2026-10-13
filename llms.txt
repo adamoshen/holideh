@@ -9,12 +9,14 @@ the [Canada Holidays API](https://canada-holidays.ca).
 You can install the package using:
 
 ``` r
+
 install.packages("holideh")
 ```
 
 The development version can be installed using
 
 ``` r
+
 # install.packages("pak")
 pak::pak("adamoshen/holideh")
 ```
@@ -22,6 +24,7 @@ pak::pak("adamoshen/holideh")
 or
 
 ``` r
+
 # install.packages("remotes")
 remotes::install_github("adamoshen/holideh")
 ```
@@ -29,6 +32,7 @@ remotes::install_github("adamoshen/holideh")
 ## Basic usage
 
 ``` r
+
 library(magrittr)
 library(tibble)
 library(purrr)
@@ -52,6 +56,7 @@ Federal holidays can be retrieved from the [Canada Holidays
 API](https://canada-holidays.ca) as a tibble:
 
 ``` r
+
 get_holidays(2027, federal = TRUE)
 #> # A tibble: 12 × 7
 #>    date       observed_date name_en         name_fr federal holiday_id provinces
@@ -85,6 +90,7 @@ API](https://canada-holidays.ca) by providing the two-letter
 abbreviation for the province/territory:
 
 ``` r
+
 get_province("ON", 2027)
 #> # A tibble: 9 × 10
 #>   date       observed_date name_en        name_fr federal holiday_id province_id
@@ -112,6 +118,7 @@ Consider the following setup:
   December 28, respectively.
 
 ``` r
+
 holiday_date <- ymd(c("2027-12-25", "2027-12-26"))
 observed_date <- ymd(c("2027-12-27", "2027-12-28"))
 
@@ -125,6 +132,7 @@ calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
   weekend (typically Saturday or Sunday, but can be modified).
 
   ``` r
+
   set_names(is_weekend(calendar), calendar)
   #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
   #>      FALSE       TRUE       TRUE      FALSE      FALSE      FALSE      FALSE
@@ -137,6 +145,7 @@ calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
   holiday dates.
 
   ``` r
+
   set_names(is_holiday(calendar, holiday_date), calendar)
   #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
   #>      FALSE       TRUE       TRUE      FALSE      FALSE      FALSE      FALSE
@@ -151,6 +160,7 @@ calendar <- seq(from = ymd("2027-12-24"), to = ymd("2027-12-30"), by = "1 day")
   supplied dates are a business day:
 
   ``` r
+
   set_names(is_bizday(calendar, holiday_date), calendar)
   #> 2027-12-24 2027-12-25 2027-12-26 2027-12-27 2027-12-28 2027-12-29 2027-12-30 
   #>       TRUE      FALSE      FALSE       TRUE       TRUE       TRUE       TRUE
@@ -191,6 +201,8 @@ vignette](https://adamoshen.github.io/holideh/articles/holideh.html).
   : Detect non-business days
 - [`count_bizdays()`](https://adamoshen.github.io/holideh/reference/count_bizdays.md)
   : Count the number of business days between a range
+- [`bind_count_bizdays()`](https://adamoshen.github.io/holideh/reference/bind_count_bizdays.md)
+  : Bind the count of business days to a data frame
 
 # Articles
 

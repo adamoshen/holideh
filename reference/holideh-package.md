@@ -1,7 +1,7 @@
 # holideh: Working with Canadian Dates
 
 Convenience date tools for identifying weekends, business days, and
-Canadian holidays, including R wrappers for the Canada Holidays API
+Canadian holidays, including R wrappers for the 'Canada Holidays' API
 <https://canada-holidays.ca/>.
 
 ## See also
@@ -17,3 +17,7 @@ Useful links:
 ## Author
 
 **Maintainer**: Adam Shen <adamshen1@gmail.com> \[copyright holder\]
+
+Authors:
+
+- Adam Shen <adamshen1@gmail.com> \[copyright holder\]

@@ -41,6 +41,7 @@ or by defining a custom vector of holidays.
 
 ## See also
 
+[`bind_count_bizdays()`](https://adamoshen.github.io/holideh/reference/bind_count_bizdays.md),
 [`is_bizday()`](https://adamoshen.github.io/holideh/reference/is_bizday.md),
 [`is_holiday()`](https://adamoshen.github.io/holideh/reference/off_day.md),
 [`is_weekend()`](https://adamoshen.github.io/holideh/reference/off_day.md)
@@ -49,11 +50,6 @@ or by defining a custom vector of holidays.
 
 ``` r
 library(lubridate)
-#> 
-#> Attaching package: ‘lubridate’
-#> The following objects are masked from ‘package:base’:
-#> 
-#>     date, intersect, setdiff, union
 
 winter_holidays <- ymd(c("2025-12-25", "2025-12-26"))
 

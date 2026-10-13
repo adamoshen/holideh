@@ -6,6 +6,7 @@ be used.
 ## Packages
 
 ``` r
+
 library(magrittr)
 library(tibble)
 library(dplyr)
@@ -19,6 +20,7 @@ library(holideh)
 To get the federal holidays for the 2019 year, we can use:
 
 ``` r
+
 holidays19 <- get_holidays(2019, federal = TRUE)
 
 holidays19
@@ -33,12 +35,12 @@ holidays19
 #>  3 2019-04-22 2019-04-22    Easter Monday   Lundi … TRUE             9 <tibble> 
 #>  4 2019-05-20 2019-05-20    Victoria Day    Fête d… TRUE            12 <tibble> 
 #>  5 2019-07-01 2019-07-01    Canada Day      Fête d… TRUE            16 <tibble> 
-#>  6 2019-08-05 2019-08-05    Civic Holiday   Congé … TRUE            19 <tibble> 
-#>  7 2019-09-02 2019-09-02    Labour Day      Fête d… TRUE            27 <tibble> 
-#>  8 2019-10-14 2019-10-14    Thanksgiving    Action… TRUE            31 <tibble> 
-#>  9 2019-11-11 2019-11-11    Remembrance Day Jour d… TRUE            32 <tibble> 
-#> 10 2019-12-25 2019-12-25    Christmas Day   Noël    TRUE            33 <tibble> 
-#> 11 2019-12-26 2019-12-26    Boxing Day      Lendem… TRUE            34 <tibble>
+#>  6 2019-08-05 2019-08-05    Civic Holiday   Congé … TRUE            20 <tibble> 
+#>  7 2019-09-02 2019-09-02    Labour Day      Fête d… TRUE            28 <tibble> 
+#>  8 2019-10-14 2019-10-14    Thanksgiving    Action… TRUE            32 <tibble> 
+#>  9 2019-11-11 2019-11-11    Remembrance Day Jour d… TRUE            33 <tibble> 
+#> 10 2019-12-25 2019-12-25    Christmas Day   Noël    TRUE            34 <tibble> 
+#> 11 2019-12-26 2019-12-26    Boxing Day      Lendem… TRUE            35 <tibble>
 ```
 
 ### More than one year
@@ -55,6 +57,7 @@ to combine all holidays into a single tibble.
 To get the federal holidays for the 2026 to 2028 years, we can use:
 
 ``` r
+
 holidays <- 2026:2028 %>%
   map(\(year) get_holidays(year, federal = TRUE)) %>%
   list_rbind()
@@ -71,11 +74,11 @@ holidays
 #>  3 2026-04-06 2026-04-06    Easter Monday   Lundi … TRUE             9 <tibble> 
 #>  4 2026-05-18 2026-05-18    Victoria Day    Fête d… TRUE            12 <tibble> 
 #>  5 2026-07-01 2026-07-01    Canada Day      Fête d… TRUE            16 <tibble> 
-#>  6 2026-08-03 2026-08-03    Civic Holiday   Congé … TRUE            19 <tibble> 
-#>  7 2026-09-07 2026-09-07    Labour Day      Fête d… TRUE            27 <tibble> 
-#>  8 2026-09-30 2026-09-30    National Day f… Journé… TRUE            29 <tibble> 
-#>  9 2026-10-12 2026-10-12    Thanksgiving    Action… TRUE            31 <tibble> 
-#> 10 2026-11-11 2026-11-11    Remembrance Day Jour d… TRUE            32 <tibble> 
+#>  6 2026-08-03 2026-08-03    Civic Holiday   Congé … TRUE            20 <tibble> 
+#>  7 2026-09-07 2026-09-07    Labour Day      Fête d… TRUE            28 <tibble> 
+#>  8 2026-09-30 2026-09-30    National Day f… Journé… TRUE            30 <tibble> 
+#>  9 2026-10-12 2026-10-12    Thanksgiving    Action… TRUE            32 <tibble> 
+#> 10 2026-11-11 2026-11-11    Remembrance Day Jour d… TRUE            33 <tibble> 
 #> # ℹ 26 more rows
 ```
 
@@ -91,6 +94,7 @@ To get the holidays for the province of Ontario for the 2019 year, we
 can use:
 
 ``` r
+
 holidays_on19 <- get_province("ON", year = 2019)
 
 holidays_on19
@@ -105,10 +109,10 @@ holidays_on19
 #> 3 2019-04-19 2019-04-19    Good Friday    Vendre… TRUE             8 ON         
 #> 4 2019-05-20 2019-05-20    Victoria Day   Fête d… TRUE            12 ON         
 #> 5 2019-07-01 2019-07-01    Canada Day     Fête d… TRUE            16 ON         
-#> 6 2019-09-02 2019-09-02    Labour Day     Fête d… TRUE            27 ON         
-#> 7 2019-10-14 2019-10-14    Thanksgiving   Action… TRUE            31 ON         
-#> 8 2019-12-25 2019-12-25    Christmas Day  Noël    TRUE            33 ON         
-#> 9 2019-12-26 2019-12-26    Boxing Day     Lendem… TRUE            34 ON         
+#> 6 2019-09-02 2019-09-02    Labour Day     Fête d… TRUE            28 ON         
+#> 7 2019-10-14 2019-10-14    Thanksgiving   Action… TRUE            32 ON         
+#> 8 2019-12-25 2019-12-25    Christmas Day  Noël    TRUE            34 ON         
+#> 9 2019-12-26 2019-12-26    Boxing Day     Lendem… TRUE            35 ON         
 #> # ℹ 3 more variables: province_name_en <chr>, province_name_fr <chr>,
 #> #   source_info <list>
 ```
@@ -129,6 +133,7 @@ respectively. Therefore, they will be observed the proceeding Monday and
 Tuesday.
 
 ``` r
+
 simple_example <- tibble(
   dates = seq(from = ymd("2027-12-20"), to = ymd("2028-01-05"), by = "1 day")
 )
@@ -163,6 +168,7 @@ For a federal government setting, you will likely be using the observed
 dates, not the actual holiday dates:
 
 ``` r
+
 holiday_dates <- pull(holidays, date)
 obs_dates <- pull(holidays, observed_date)
 ```
@@ -170,6 +176,7 @@ obs_dates <- pull(holidays, observed_date)
 The example below gives an overview of the helpers in this package:
 
 ``` r
+
 simple_example <- simple_example %>%
   mutate(
     # `wday()` is from lubridate
@@ -229,6 +236,7 @@ function, which counts the number of business days between two dates
 (inclusively).
 
 ``` r
+
 real_example <- tibble(
   end = seq(from = ymd("2027-11-03"), to = ymd("2028-01-27"), by = "2 weeks"),
   points = ceiling(runif(length(end), min = 90, max = 120))
@@ -254,6 +262,7 @@ To this data frame, we need to add the start of the reporting period (13
 days prior):
 
 ``` r
+
 real_example <- real_example %>%
   mutate(start = end - days(13)) %>%
   relocate(start)
@@ -283,6 +292,7 @@ have the number of business days, calculating productivity is
 straightforward:
 
 ``` r
+
 real_example <- real_example %>%
   mutate(
     n_bizdays = map2_int(
@@ -313,6 +323,7 @@ We can check our work by zooming in to the period of 2027-12-16 to
 demonstrated in the simple example.
 
 ``` r
+
 tibble(
   dates = seq(from = ymd("2027-12-16"), to = ymd("2027-12-29"), by = "1 day"),
   day_of_week = wday(dates, label = TRUE, abbr = FALSE)

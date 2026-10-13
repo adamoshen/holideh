@@ -19,4 +19,4 @@ reference:
   - is_bizday
   - is_holiday
   - is_weekend
-  - count_bizdays
+  - count_bizdays, bind_count_bizdays

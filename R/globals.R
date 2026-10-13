@@ -4,6 +4,7 @@ globalVariables(
     "federal",
     "holiday_id",
     "holidays",
+    "n_bizdays",
     "name_en",
     "name_fr",
     "nextHoliday",

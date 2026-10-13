@@ -12,7 +12,7 @@
 #' that should be considered a weekend. Acceptable values are: `"Sun"`, `"Mon"`, `"Tue"`, `"Wed"`,
 #' `"Thu"`, `"Fri"`, `"Sat"`.
 #' @returns A single number.
-#' @seealso [is_bizday()], [is_holiday()], [is_weekend()]
+#' @seealso [bind_count_bizdays()], [is_bizday()], [is_holiday()], [is_weekend()]
 #' @examples
 #' library(lubridate)
 #'

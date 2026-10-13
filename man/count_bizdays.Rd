@@ -35,5 +35,5 @@ winter_holidays <- ymd(c("2025-12-25", "2025-12-26"))
 count_bizdays(from = ymd("2025-12-20"), to = ymd("2025-12-31"), holidays = winter_holidays)
 }
 \seealso{
-\code{\link[=is_bizday]{is_bizday()}}, \code{\link[=is_holiday]{is_holiday()}}, \code{\link[=is_weekend]{is_weekend()}}
+\code{\link[=bind_count_bizdays]{bind_count_bizdays()}}, \code{\link[=is_bizday]{is_bizday()}}, \code{\link[=is_holiday]{is_holiday()}}, \code{\link[=is_weekend]{is_weekend()}}
 }

@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Convenience date tools for identifying weekends, business days, and Canadian holidays, including R wrappers for the Canada Holidays API \url{https://canada-holidays.ca/}.
+Convenience date tools for identifying weekends, business days, and Canadian holidays, including R wrappers for the 'Canada Holidays' API \url{https://canada-holidays.ca/}.
 }
 \seealso{
 Useful links:
@@ -21,6 +21,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Adam Shen \email{adamshen1@gmail.com} [copyright holder]
+
+Authors:
+\itemize{
+  \item Adam Shen \email{adamshen1@gmail.com} [copyright holder]
+}
 
 }
 \keyword{internal}

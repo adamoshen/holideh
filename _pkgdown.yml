@@ -17,6 +17,6 @@ reference:
 - title: "Date helpers"
   contents:
   - is_bizday
-  - is_holiday
-  - is_weekend
-  - count_bizdays, bind_count_bizdays
+  - off_day
+  - count_bizdays
+  - bind_count_bizdays
